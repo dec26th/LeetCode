@@ -7,5 +7,5 @@ import (
 
 func TestIsUniqe(t *testing.T) {
 	fmt.Println(isUniqueMap("abc"))
-	fmt.Println(isUniqueBitArray("abca"))
+	fmt.Println(isUniqueBitArray("wdgoiws"))
 }
