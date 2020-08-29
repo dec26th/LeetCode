@@ -1,6 +1,5 @@
 package is_unique
 
-
 func isUniqueMap(astr string) bool {
 	lenOfAstr := len(astr)
 	astrMap := make(map[string]int, lenOfAstr)
@@ -21,7 +20,7 @@ func isUniqueBitArray(astr string) bool {
 
 	for i := 0; i < lenOfAstr; i++ {
 		index := int(rune(astr[i])) - asciiA
-		if mark & (1 << index) != 0 {
+		if mark&(1<<index) != 0 {
 			return false
 		}
 
