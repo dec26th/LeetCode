@@ -1,2 +1,2 @@
-# LeetCode
-My LeetCode
+# Leet Code In GO
+**Just Go**
