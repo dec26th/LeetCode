@@ -27,12 +27,28 @@ func sum(s []int, c chan int) {
 }
 
 func TestGo(t *testing.T) {
-	s := []int{7, 2, 8, -9, 4, 0}
-
 	c := make(chan int)
-	go sum(s[:len(s)/2], c)
-	go sum(s[len(s)/2:], c)
+	c<- 1
+	fmt.Println(<-c)
+	close(c)
+	close(c)
+}
 
-	fmt.Println(<- c)
-	fmt.Println(<- c)
+
+func TestInterface(t *testing.T) {
+	a := make(chan int)
+	b := make(chan int)
+	c := make(chan int)
+	a <- 1
+	b <- 2
+	c <- 3
+	select {
+
+	case i := <-a:
+		fmt.Println(i)
+	case i := <- b:
+		fmt.Println(i)
+	case i := <- c:
+		fmt.Println(i)
+	}
 }
