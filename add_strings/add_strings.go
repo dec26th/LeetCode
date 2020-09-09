@@ -1,29 +1,36 @@
 package add_strings
 
 import (
-	"math"
 	"strconv"
 )
 
 func addStrings(num1 string, num2 string) string {
 	lenOfNum1 := len(num1)
 	lenOfNum2 := len(num2)
-	longer := int(math.Max(float64(lenOfNum1), float64(lenOfNum2)))
 
-	carry := 0
-	sum := 0
-	for i := 0; i < longer; i++ {
-		if i < lenOfNum1 {
-			carry += int(num1[i] - '0')
+	res := ""
+	i, j, carry := lenOfNum1 - 1, lenOfNum2 - 1, 0
+	var n1, n2 int
+
+	for i >= 0 || j >= 0 || carry != 0 {
+
+		if i >= 0 {
+			n1 = int(num1[i] - '0')
+		}else {
+			n1 = 0
 		}
-		if i < lenOfNum2 {
-			carry += int(num2[i] - '0')
+		if  j >= 0 {
+			n2 = int(num2[j] - '0')
+		}else {
+			n2 = 0
 		}
 
-		sum += (carry % 10) * int(math.Pow10(i))
-		carry = carry / 10
+		temp := n1 + n2 + carry
+		carry = temp / 10
+		res = strconv.Itoa(temp % 10) + res
+
+		i --
+		j --
 	}
-	sum += carry * int(math.Pow10(longer))
-
-	return strconv.Itoa(sum)
+	return res
 }
