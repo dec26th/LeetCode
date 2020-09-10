@@ -1,13 +1,18 @@
 package max_area_of_island
 
-import "math"
+import (
+	"math"
+)
 
 var line, coluom int
 
 func maxAreaOfIsland(grid [][]int) int {
 	line = len(grid)
 	coluom = len(grid[0])
-	maxArea := math.MinInt32
+	if line == 1 && coluom == 1{
+		return grid[0][0]
+	}
+	maxArea := 0
 
 	for i := 0; i < line; i++ {
 		for j := 0; j < coluom; j++ {
