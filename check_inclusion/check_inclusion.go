@@ -1,45 +1,28 @@
 package check_inclusion
 
-import "strings"
 //todo 排列问题
 func checkInclusion(s1 string, s2 string) bool  {
-	resultList := permutation(s2)
+	lenOfS1 := len(s1)
+	lenOfS2 := len(s2)
+	if lenOfS1 > lenOfS2 {
+		return false
+	}
 
-	for _, posbString := range resultList {
-		if strings.Contains(s1, posbString) {
+	charSet1, charSet2 := [26]int{}, [26]int{}
+
+	for i := 0; i < lenOfS1; i++ {
+		charSet1[int(s1[i] - 'a')] ++
+		charSet2[int(s2[i] - 'a')] ++
+	}
+
+	for j := 0; j < lenOfS2 - lenOfS1; j++ {
+		if charSet1 == charSet2 {
 			return true
 		}
+		charSet2[s2[j] - 'a']--
+		charSet2[s2[j + lenOfS1] - 'a'] ++
 	}
-	return false
+
+	return charSet1 == charSet2
 }
 
-var strMap map[string]int
-
-func permutation(s string) []string {
-	strList := make([]string, 0)
-	strMap = make(map[string]int)
-	dfs([]byte(s), 0, &strList)
-	return strList
-}
-
-func dfs(byteList []byte, start int, strs *[]string) {
-	if start == len(byteList) {
-		if _, ok := strMap[string(byteList)]; !ok {
-			*strs = append(*strs, string(byteList))
-			strMap[string(byteList)] = 1
-		}
-
-	} else {
-		for i := start; i < len(byteList) - 1; i++ {
-			if i != start {
-				byteList[start], byteList[i] = byteList[i], byteList[start]
-			}
-
-			dfs(byteList, start + 1, strs)
-
-			if i != start {
-				byteList[start], byteList[i] = byteList[i], byteList[start]
-			}
-		}
-	}
-}
