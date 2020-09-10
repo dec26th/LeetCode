@@ -27,3 +27,45 @@ func singleNumberBit(nums []int) int {
 	}
 	return result
 }
+
+func singleNumberOtherThree(nums []int) int {
+	record := make(map[int]int)
+
+	for _, num := range nums {
+		if _, ok := record[num]; ok {
+			record[num] += 1
+		} else {
+			record[num] = 1
+		}
+	}
+
+	for k, v := range record {
+		if v == 1 {
+			return k
+		}
+	}
+	return 0
+}
+
+func twoNumberOnce(nums []int) []int {
+	record := make(map[int]int)
+	result := make([]int, 0)
+
+	for _, num := range nums {
+		if _, ok := record[num]; ok {
+			record[num] += 1
+		} else {
+			record[num] = 1
+		}
+	}
+
+	for k, v := range record {
+		if v == 1 {
+			result = append(result, k)
+			if len(result) == 2 {
+				return result
+			}
+		}
+	}
+	return []int {0, 0}
+}
