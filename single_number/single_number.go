@@ -47,6 +47,16 @@ func singleNumberOtherThree(nums []int) int {
 	return 0
 }
 
+func singleNumberOhterThreeBit(nums []int) int {
+	one, two := 0, 0
+
+	for _, num := range nums {
+		one = one ^ num & (^two)
+		two = two ^ num & (^one)
+	}
+	return one
+}
+
 func twoNumberOnce(nums []int) []int {
 	record := make(map[int]int)
 	result := make([]int, 0)
@@ -68,4 +78,21 @@ func twoNumberOnce(nums []int) []int {
 		}
 	}
 	return []int {0, 0}
+}
+
+func twoNumberOnceBit(nums []int) []int {
+	bitmask := 0
+	for _, v := range nums {
+		bitmask ^= v
+	}
+
+	diff := bitmask & (- bitmask)
+	var x int
+	for _, v := range nums {
+		if (v & diff) != 0 {
+			x ^= v
+		}
+	}
+
+	return []int {x, bitmask ^ x}
 }
