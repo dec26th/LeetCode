@@ -13,12 +13,33 @@ func checkInclusion(s1 string, s2 string) bool  {
 	return false
 }
 
+var strMap map[string]int
+
 func permutation(s string) []string {
-	resultList := make([]string, 0)
-	lenOfString := len(s)
+	strList := make([]string, 0)
+	strMap = make(map[string]int)
+	dfs([]byte(s), 0, &strList)
+	return strList
+}
 
-	for i := 0; i < lenOfString; i++ {
+func dfs(byteList []byte, start int, strs *[]string) {
+	if start == len(byteList) {
+		if _, ok := strMap[string(byteList)]; !ok {
+			*strs = append(*strs, string(byteList))
+			strMap[string(byteList)] = 1
+		}
 
+	} else {
+		for i := start; i < len(byteList) - 1; i++ {
+			if i != start {
+				byteList[start], byteList[i] = byteList[i], byteList[start]
+			}
+
+			dfs(byteList, start + 1, strs)
+
+			if i != start {
+				byteList[start], byteList[i] = byteList[i], byteList[start]
+			}
+		}
 	}
-	return resultList
 }
