@@ -1,6 +1,5 @@
 package check_inclusion
 
-//todo 排列问题
 func checkInclusion(s1 string, s2 string) bool  {
 	lenOfS1 := len(s1)
 	lenOfS2 := len(s2)

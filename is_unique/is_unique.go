@@ -5,7 +5,7 @@ func isUniqueMap(astr string) bool {
 	astrMap := make(map[string]int, lenOfAstr)
 
 	for i := 0; i < lenOfAstr; i++ {
-		if _, ok := astrMap[string(astr[i])]; ok == true {
+		if _, ok := astrMap[string(astr[i])]; ok {
 			return false
 		}
 		astrMap[string(astr[i])] = i
