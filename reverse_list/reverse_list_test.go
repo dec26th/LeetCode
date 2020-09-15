@@ -14,5 +14,5 @@ func TestReverseList(t *testing.T) {
 		},
 	}
 
-	reverseList(test)
+	reverseListTowPointer(test)
 }
