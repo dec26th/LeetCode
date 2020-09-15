@@ -57,7 +57,7 @@ func reverseBetweenPointer(head *ListNode, m int, n int) *ListNode { // ✅
 	for i := m; i < n; i++ {  // 每次将cur的next(也就是nxt)插到pre的后面
 		nxtNode := curNode.Next
 		curNode.Next = nxtNode.Next
-		nxtNode.Next =preNode.Next
+		nxtNode.Next = preNode.Next
 		preNode.Next = nxtNode
 	}
 
