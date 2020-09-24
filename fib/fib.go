@@ -7,7 +7,7 @@ func fib(N int) int {
 	var now int
 	pp, p := 0, 1
 
-	for i := 2; i <= N; i ++{
+	for i := 2; i <= N; i++ {
 		now = p + pp
 		pp = p
 		p = now

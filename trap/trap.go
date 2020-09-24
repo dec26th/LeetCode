@@ -13,11 +13,11 @@ func trap(height []int) int {
 		temp := 0
 		hasLow = false
 		for j := 0; j < lenOfHeight; j++ {
-			if hasLow && height[j] < i + 1 {
-				temp ++
+			if hasLow && height[j] < i+1 {
+				temp++
 			}
 
-			if height[j] >= i + 1 {
+			if height[j] >= i+1 {
 				totalDrop += temp
 				temp = 0
 				hasLow = true
@@ -37,7 +37,6 @@ func getHighest(height []int) (max int) {
 	return max
 }
 
-
 func trapDP(height []int) int {
 	var totalDrop int
 	lenOfHeight := len(height)
@@ -45,11 +44,11 @@ func trapDP(height []int) int {
 	maxLeft := make([]int, lenOfHeight)
 
 	for i := lenOfHeight - 2; i >= 0; i-- {
-		maxRight[i] = int(math.Max(float64(maxRight[i + 1]), float64(height[i + 1])))
+		maxRight[i] = int(math.Max(float64(maxRight[i+1]), float64(height[i+1])))
 	}
 
-	for i := 1; i < lenOfHeight - 1; i++ {
-		maxLeft[i] = int(math.Max(float64(maxLeft[i - 1]), float64(height[i - 1])))
+	for i := 1; i < lenOfHeight-1; i++ {
+		maxLeft[i] = int(math.Max(float64(maxLeft[i-1]), float64(height[i-1])))
 	}
 
 	for i := 1; i < lenOfHeight; i++ {

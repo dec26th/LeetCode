@@ -1,8 +1,8 @@
 package tree_traversal
 
 func preorderTraversalNotResursion(root *TreeNode) []int {
-	stack := *new([] *TreeNode)
-	result := *new([] int)
+	stack := *new([]*TreeNode)
+	result := *new([]int)
 
 	for 0 < len(stack) || root != nil {
 		for root != nil {
@@ -20,8 +20,8 @@ func preorderTraversalNotResursion(root *TreeNode) []int {
 }
 
 func inorderTraversalNotResursion(root *TreeNode) []int {
-	stack := *new([] *TreeNode)
-	result := *new([] int)
+	stack := *new([]*TreeNode)
+	result := *new([]int)
 
 	for 0 < len(stack) || root != nil {
 		for root != nil {

@@ -6,17 +6,17 @@ func search(nums []int, target int) int {
 	left := 0
 	right := len(nums) - 1
 
-	for left < right - 1 {
+	for left < right-1 {
 		mid := (left + right) / 2
 		leftValue, midValue, rightValue := nums[left], nums[mid], nums[right]
 
-		switch  {
+		switch {
 
 		case midValue == target:
-			 return mid
+			return mid
 
 		case leftValue <= target && target <= midValue:
-			 right = mid
+			right = mid
 
 		case target >= midValue && target <= rightValue:
 			left = mid + 1

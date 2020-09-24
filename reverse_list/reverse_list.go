@@ -1,7 +1,7 @@
 package reverse_list
 
 type ListNode struct {
-	Val int
+	Val  int
 	Next *ListNode
 }
 
@@ -19,7 +19,7 @@ func reverseList(head *ListNode) *ListNode {
 
 	head = new(ListNode)
 	result := head
-	for i := len(dump) - 1; i >=0; i-- {
+	for i := len(dump) - 1; i >= 0; i-- {
 		result.Val = dump[i]
 		if i == 0 {
 			break
@@ -45,14 +45,14 @@ func reverseListTowPointer(head *ListNode) *ListNode {
 			pre.Next = nil
 			cur = pre
 			pre = temp
-			count ++
+			count++
 			continue
 		}
 		temp := pre.Next
 		pre.Next = cur
 		cur = pre
 		pre = temp
-		count ++
+		count++
 	}
 	return cur
 }

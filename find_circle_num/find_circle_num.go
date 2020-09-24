@@ -12,7 +12,7 @@ func findCircleNum(M [][]int) int {
 	for i := 0; i < row; i++ {
 		for j := 0; j < line; j++ {
 			if M[i][j] == 1 {
-				numOfCircle ++
+				numOfCircle++
 				findRelatedFriends(i, j, &M)
 			}
 		}
@@ -20,7 +20,7 @@ func findCircleNum(M [][]int) int {
 	return numOfCircle
 }
 
-func findRelatedFriends(x int, y int, M *[][]int)  {
+func findRelatedFriends(x int, y int, M *[][]int) {
 	if x == row || x < 0 {
 		return
 	}

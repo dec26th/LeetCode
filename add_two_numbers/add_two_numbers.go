@@ -9,9 +9,9 @@ package add_two_numbers
  */
 
 type ListNode struct {
-	     Val int
-	     Next *ListNode
-	 }
+	Val  int
+	Next *ListNode
+}
 
 func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 
@@ -23,8 +23,7 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 
 		body.Next = &ListNode{}
 
-
-		if count == 0{
+		if count == 0 {
 			count += 1
 			head = body
 		}

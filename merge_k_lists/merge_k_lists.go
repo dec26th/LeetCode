@@ -5,8 +5,8 @@ import (
 )
 
 type ListNode struct {
-	 Val int
-	 Next *ListNode
+	Val  int
+	Next *ListNode
 }
 
 func mergeKLists(lists []*ListNode) *ListNode {
@@ -21,7 +21,7 @@ func mergeKLists(lists []*ListNode) *ListNode {
 
 	for _, v := range lists {
 		if !appendValue(valueLists, v) {
-			count ++
+			count++
 		}
 	}
 	if count == len(lists) {
@@ -32,7 +32,7 @@ func mergeKLists(lists []*ListNode) *ListNode {
 
 	for k, v := range *valueLists {
 		body.Val = v
-		if k != len(* valueLists) - 1 {
+		if k != len(*valueLists)-1 {
 			body.Next = &ListNode{}
 			body = body.Next
 		}

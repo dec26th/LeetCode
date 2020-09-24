@@ -4,7 +4,7 @@ import "testing"
 
 func TestReverseBetween(t *testing.T) {
 	test := &ListNode{
-		Val:  1,
+		Val: 1,
 		Next: &ListNode{
 			Val:  2,
 			Next: nil,

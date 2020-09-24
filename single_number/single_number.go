@@ -19,7 +19,6 @@ func singleNumber(nums []int) int {
 	return 0
 }
 
-
 func singleNumberBit(nums []int) int {
 	var result int
 	for _, value := range nums {
@@ -51,8 +50,8 @@ func singleNumberOhterThreeBit(nums []int) int {
 	one, two := 0, 0
 
 	for _, num := range nums {
-		one = one ^ num & (^two)
-		two = two ^ num & (^one)
+		one = one ^ num&(^two)
+		two = two ^ num&(^one)
 	}
 	return one
 }
@@ -77,7 +76,7 @@ func twoNumberOnce(nums []int) []int {
 			}
 		}
 	}
-	return []int {0, 0}
+	return []int{0, 0}
 }
 
 func twoNumberOnceBit(nums []int) []int {
@@ -86,7 +85,7 @@ func twoNumberOnceBit(nums []int) []int {
 		bitmask ^= v
 	}
 
-	diff := bitmask & (- bitmask)
+	diff := bitmask & (-bitmask)
 	var x int
 	for _, v := range nums {
 		if (v & diff) != 0 {
@@ -94,5 +93,5 @@ func twoNumberOnceBit(nums []int) []int {
 		}
 	}
 
-	return []int {x, bitmask ^ x}
+	return []int{x, bitmask ^ x}
 }

@@ -28,12 +28,11 @@ func sum(s []int, c chan int) {
 
 func TestGo(t *testing.T) {
 	c := make(chan int)
-	c<- 1
+	c <- 1
 	fmt.Println(<-c)
 	close(c)
 	close(c)
 }
-
 
 func TestInterface(t *testing.T) {
 	a := make(chan int)
@@ -46,9 +45,9 @@ func TestInterface(t *testing.T) {
 
 	case i := <-a:
 		fmt.Println(i)
-	case i := <- b:
+	case i := <-b:
 		fmt.Println(i)
-	case i := <- c:
+	case i := <-c:
 		fmt.Println(i)
 	}
 }

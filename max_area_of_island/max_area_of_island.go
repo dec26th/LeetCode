@@ -9,7 +9,7 @@ var row, line int
 func maxAreaOfIsland(grid [][]int) int {
 	row = len(grid)
 	line = len(grid[0])
-	if row == 1 && line == 1{
+	if row == 1 && line == 1 {
 		return grid[0][0]
 	}
 	maxArea := 0
@@ -35,8 +35,7 @@ func getArea(x int, y int, grid *[][]int) int {
 
 	if (*grid)[x][y] == 1 {
 		(*grid)[x][y] = 0
-		return 1 + getArea(x, y + 1, grid) + getArea(x + 1, y, grid) + getArea(x - 1, y, grid) + getArea(x, y - 1, grid)
+		return 1 + getArea(x, y+1, grid) + getArea(x+1, y, grid) + getArea(x-1, y, grid) + getArea(x, y-1, grid)
 	}
 	return 0
 }
-

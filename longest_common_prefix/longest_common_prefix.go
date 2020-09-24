@@ -7,7 +7,7 @@ func longestCommonPrefix(strs []string) string {
 		return ""
 	}
 
-	if len(strs) == 1{
+	if len(strs) == 1 {
 		return strs[0]
 	}
 	var tempLongestPrefix string
@@ -18,8 +18,8 @@ func longestCommonPrefix(strs []string) string {
 		}
 
 		lenOfTempPrefix := len(tempLongestPrefix)
-		for k := 0;  k < lenOfTempPrefix; k++ {
-			if ! strings.HasPrefix(str, tempLongestPrefix[:k + 1]) {
+		for k := 0; k < lenOfTempPrefix; k++ {
+			if !strings.HasPrefix(str, tempLongestPrefix[:k+1]) {
 				if k == 0 {
 					return ""
 				}
@@ -28,7 +28,7 @@ func longestCommonPrefix(strs []string) string {
 			}
 		}
 	}
-	if strs[0] == tempLongestPrefix && ! strings.Contains(strs[1], tempLongestPrefix) {
+	if strs[0] == tempLongestPrefix && !strings.Contains(strs[1], tempLongestPrefix) {
 		tempLongestPrefix = ""
 	}
 	return tempLongestPrefix

@@ -6,14 +6,14 @@ import (
 )
 
 func TestAddTwoNumbers(t *testing.T) {
-	l1 := & ListNode{
-		Val:  3,
+	l1 := &ListNode{
+		Val: 3,
 		Next: &ListNode{
 			Val: 7,
 		},
 	}
-	l2 :=  & ListNode{
-		Val:  9,
+	l2 := &ListNode{
+		Val: 9,
 		Next: &ListNode{
 			Val: 2,
 		},

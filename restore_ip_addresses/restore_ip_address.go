@@ -17,13 +17,13 @@ func restoreIpAddresses(s string) []string {
 	return *result
 }
 
-func dfs(layer int, numList []byte, result *[]string, tempResult []string){
+func dfs(layer int, numList []byte, result *[]string, tempResult []string) {
 	if layer > 4 {
 		return
 	}
 
 	lenOfNum := len(numList)
-	if lenOfNum > 3 * (5 - layer) {  // 剩余过多
+	if lenOfNum > 3*(5-layer) { // 剩余过多
 		return
 	}
 
@@ -31,20 +31,20 @@ func dfs(layer int, numList []byte, result *[]string, tempResult []string){
 		num, _ := strconv.Atoi(string(numList))
 		if num <= 255 {
 			tempResult = append(tempResult, string(numList))
-			if ! judgeValid(tempResult) {
+			if !judgeValid(tempResult) {
 				return
 			}
 			*result = append(*result, strings.Join(tempResult, "."))
 			return
 		}
 	}
-	for i := 1; i < lenOfNum; i ++ {
+	for i := 1; i < lenOfNum; i++ {
 		if i < 4 {
 			num := string(numList[:i])
 			if intNum, _ := strconv.Atoi(num); intNum <= 255 {
 				temp := tempResult[:]
 				temp = append(temp, num)
-				dfs(layer + 1, numList[i:], result, temp)
+				dfs(layer+1, numList[i:], result, temp)
 			}
 		}
 	}
@@ -52,7 +52,7 @@ func dfs(layer int, numList []byte, result *[]string, tempResult []string){
 
 func judgeValid(tempResult []string) bool {
 	for _, num := range tempResult {
-		if len(num) != 1 && num[0] - '0' == 0 {
+		if len(num) != 1 && num[0]-'0' == 0 {
 			return false
 		}
 	}

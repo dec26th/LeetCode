@@ -1,9 +1,10 @@
 package reverse_k_group
 
 type ListNode struct {
-	Val		int
-	Next	*ListNode
+	Val  int
+	Next *ListNode
 }
+
 //todo 每k个反转一次
 func reverseKGroup(head *ListNode, k int) *ListNode {
 	dummyNode := &ListNode{
@@ -32,7 +33,6 @@ func reverseKGroup(head *ListNode, k int) *ListNode {
 
 	return dummyNode.Next
 }
-
 
 func reverse(start *ListNode) *ListNode {
 	var pre *ListNode

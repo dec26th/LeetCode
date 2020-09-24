@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func TestReverseWords(t *testing.T)  {
+func TestReverseWords(t *testing.T) {
 	test := "  hello world!  "
 	fmt.Println(reverseWords(test))
 }

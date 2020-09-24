@@ -15,9 +15,8 @@ func TestLruCache(t *testing.T) {
 	fmt.Println(test.Get(2))
 }
 
-
 func TestCopy(t *testing.T) {
-	test := []int {1, 2, 3, 4, 5, 6}
+	test := []int{1, 2, 3, 4, 5, 6}
 	copy(test[0:], test[1:])
 	fmt.Println(test)
 }

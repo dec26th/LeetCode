@@ -13,15 +13,15 @@ func reverseWords(s string) string {
 	for nowBound := lenOfString - 1; nowBound >= 0; nowBound-- {
 
 		if s[nowBound] == ' ' {
-			if nowBound + 1 != rightBound {
-				result = append(result, s[nowBound + 1: rightBound])
+			if nowBound+1 != rightBound {
+				result = append(result, s[nowBound+1:rightBound])
 			}
 			rightBound = nowBound
 		}
 	}
 
 	if s[0] != ' ' {
-		result = append(result, s[0 : rightBound])
+		result = append(result, s[0:rightBound])
 	}
 
 	return strings.Join(result, " ")

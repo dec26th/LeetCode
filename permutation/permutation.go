@@ -17,12 +17,12 @@ func dfs(byteList []byte, start int, strs *[]string) {
 		}
 
 	} else {
-		for i := start; i < len(byteList) ; i++ {
+		for i := start; i < len(byteList); i++ {
 			if i != start {
 				byteList[start], byteList[i] = byteList[i], byteList[start]
 			}
 
-			dfs(byteList, start + 1, strs)
+			dfs(byteList, start+1, strs)
 
 			if i != start {
 				byteList[start], byteList[i] = byteList[i], byteList[start]
