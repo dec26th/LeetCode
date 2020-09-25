@@ -9,7 +9,6 @@ var left *ListNode
 
 var stop bool
 
-// todo 反转m-n之间的链表
 func reverseBetween(head *ListNode, m int, n int) *ListNode {
 	left = head
 	stop = false
