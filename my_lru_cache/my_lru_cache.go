@@ -1,6 +1,5 @@
 package my_lru_cache
 
-
 type Node struct {
 	Val		int
 	Key		int
@@ -12,6 +11,7 @@ type LRUCache struct {
 	Num				int
 	Head			*Node
 	Tail			*Node
+	Cache			map[int]int
 	MaxCapacity		int
 }
 
@@ -21,84 +21,84 @@ func Constructor(capacity int) LRUCache {
 		Num:         0,
 		Head:        &Node{},
 		Tail:		 nil, // 越靠近尾部表示越在最近被使用
+		Cache: 		make(map[int]int, capacity),
 		MaxCapacity: capacity,
 	}
 }
 
 
 func (this *LRUCache) Get(key int) int {
-	cur := this.Head.Next
-	for cur != nil {
-		if cur.Key == key {
-
-			cur.Pre.Next = cur.Next
-			cur.Next.Pre = cur.Pre
-
-			this.Tail.Next = cur
-			this.Tail.Next.Pre = this.Tail
-			cur.Next = nil
-			this.Tail = this.Tail.Next
-			return cur.Val
-		}
-
-		cur = cur.Next
+	if result, ok := this.Cache[key]; ok {
+		this.ModifyNode(key)
+		return result
+	} else {
+		return -1
 	}
-	return -1
 }
 
 
 func (this *LRUCache) Put(key int, value int)  {
-	if this.Num != this.MaxCapacity {
-
-		if this.Num == 0 {
-			this.Tail = &Node {
-				Val:  value,
-				Key:  key,
-				Pre:  this.Head,
-				Next: nil,
-			}
-			this.Head.Next = this.Tail
-			this.Num++
-			return
-		}
-
-		this.Tail.Next = &Node{
+	if this.Num == 0 {
+		this.Head.Next = &Node{
 			Val:  value,
 			Key:  key,
-			Pre:  this.Tail,
+			Pre:  this.Head,
 			Next: nil,
 		}
-		this.Tail = this.Tail.Next
+		this.Cache[key] = value
 		this.Num++
 		return
-	} else { // 超过容量限制
-		cur := this.Head.Next  // 头节点
-		for cur != nil {
-			if cur.Key == key {
-				cur.Val = value
-
-				cur.Next.Pre = cur.Pre
-				cur.Pre.Next = cur.Next
-
-				this.Tail.Next = cur
-				cur.Next = nil
-				this.Tail.Next.Pre = this.Tail
-				this.Tail = this.Tail.Next
-
-				return
-			}
-			cur = cur.Next
+	} else if this.Num < this.MaxCapacity {
+		if _, ok := this.Cache[key]; ok {
+			this.Cache[key] = value
+			this.ModifyNode(key)
+			return
+		} else {
+			this.AddNode(key, value)
 		}
-
-		this.Head.Next = this.Head.Next.Next  //head是无用节点， head.next才是实际的头节点
-		this.Tail.Next = &Node{
-			Val:  value,
-			Key:  key,
-			Pre:  this.Tail,
-			Next: nil,
+	} else if this.Num == this.MaxCapacity {
+		if _, ok := this.Cache[key]; ok {
+			this.Cache[key] = value
+			this.ModifyNode(key)
+			return
+		} else {
+			this.Head.Next = this.Head.Next.Next
+			this.AddNode(key, value)
 		}
-		this.Tail = this.Tail.Next
 	}
+}
+
+func (this *LRUCache) ModifyNode(key int) {
+	cur := this.Head.Next
+	for cur != nil {
+		if cur.Key == key {
+			this.ModifyPriority(cur)
+			return
+		}
+		cur = cur.Next
+	}
+}
+
+func (this *LRUCache) ModifyPriority(target *Node) {
+	target.Next.Pre = target.Pre
+	target.Pre.Next = target.Next
+
+	this.Tail.Next = target
+	target.Next = nil
+
+	this.Tail = this.Tail.Next
+}
+
+func (this *LRUCache) AddNode(key, value int) {
+	this.Cache[key] = value
+	this.Tail.Next = &Node{
+		Val:  value,
+		Key:  key,
+		Pre:  this.Tail,
+		Next: nil,
+	}
+	this.Tail = this.Tail.Next
+	this.Num++
 }
 
 
