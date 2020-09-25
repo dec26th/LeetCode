@@ -21,7 +21,7 @@ func Constructor(capacity int) LRUCache {
 		Num:         0,
 		Head:        &Node{},
 		Tail:		 nil, // 越靠近尾部表示越在最近被使用
-		Cache: 		make(map[int]int, capacity),
+		Cache: 		 make(map[int]int, capacity),
 		MaxCapacity: capacity,
 	}
 }
@@ -48,20 +48,16 @@ func (this *LRUCache) Put(key int, value int)  {
 		this.Cache[key] = value
 		this.Num++
 		return
-	} else if this.Num < this.MaxCapacity {
-		if _, ok := this.Cache[key]; ok {
-			this.Cache[key] = value
-			this.ModifyNode(key)
-			return
-		} else {
+	} else if _, ok := this.Cache[key]; ok {
+		this.Cache[key] = value
+		this.ModifyNode(key)
+		return
+	} else {
+		if this.Num < this.MaxCapacity {
 			this.AddNode(key, value)
-		}
-	} else if this.Num == this.MaxCapacity {
-		if _, ok := this.Cache[key]; ok {
-			this.Cache[key] = value
-			this.ModifyNode(key)
 			return
 		} else {
+			delete(this.Cache, this.Head.Next.Key)
 			this.Head.Next = this.Head.Next.Next
 			this.AddNode(key, value)
 		}
