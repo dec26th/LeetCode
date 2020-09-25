@@ -11,90 +11,81 @@ type LRUCache struct {
 	Num				int
 	Head			*Node
 	Tail			*Node
-	Cache			map[int]int
+	Cache			map[int]*Node
 	MaxCapacity		int
 }
 
 
 func Constructor(capacity int) LRUCache {
-	return LRUCache{
+	LRUCache :=  LRUCache{
 		Num:         0,
 		Head:        &Node{},
-		Tail:		 nil, // 越靠近尾部表示越在最近被使用
-		Cache: 		 make(map[int]int, capacity),
+		Tail:		 &Node{}, // 越靠近尾部表示越在最近被使用
+		Cache: 		 make(map[int]*Node, capacity),
 		MaxCapacity: capacity,
 	}
+	LRUCache.Head.Next = LRUCache.Tail
+	LRUCache.Tail.Pre = LRUCache.Head
+	return LRUCache
 }
 
 
 func (this *LRUCache) Get(key int) int {
 	if result, ok := this.Cache[key]; ok {
-		this.ModifyNode(key)
-		return result
+		this.ModifyPriority(result)
+		return result.Val
 	} else {
 		return -1
 	}
 }
 
 
-func (this *LRUCache) Put(key int, value int)  {
-	if this.Num == 0 {
-		this.Head.Next = &Node{
-			Val:  value,
-			Key:  key,
-			Pre:  this.Head,
-			Next: nil,
-		}
-		this.Cache[key] = value
-		this.Num++
-		return
-	} else if _, ok := this.Cache[key]; ok {
-		this.Cache[key] = value
-		this.ModifyNode(key)
-		return
-	} else {
-		if this.Num < this.MaxCapacity {
+func (this *LRUCache) Put(key int, value int) {
+	if node, ok := this.Cache[key]; !ok {
+		if this.Num != this.MaxCapacity {
 			this.AddNode(key, value)
 			return
 		} else {
-			delete(this.Cache, this.Head.Next.Key)
-			this.Head.Next = this.Head.Next.Next
+			this.Num--
+			delete(this.Cache, this.Tail.Pre.Key)
+			this.RemoveNode(this.Tail.Pre)
 			this.AddNode(key, value)
-		}
-	}
-}
-
-func (this *LRUCache) ModifyNode(key int) {
-	cur := this.Head.Next
-	for cur != nil {
-		if cur.Key == key {
-			this.ModifyPriority(cur)
 			return
 		}
-		cur = cur.Next
+
+	} else {
+		node.Val = value
+		this.ModifyPriority(node)
 	}
 }
 
-func (this *LRUCache) ModifyPriority(target *Node) {
-	target.Next.Pre = target.Pre
-	target.Pre.Next = target.Next
+func (this *LRUCache) ModifyPriority(result *Node) {
+	this.RemoveNode(result)
 
-	this.Tail.Next = target
-	target.Next = nil
-
-	this.Tail = this.Tail.Next
+	result.Pre = this.Head
+	this.Head.Next.Pre = result
+	result.Next = this.Head.Next
+	this.Head.Next = result
 }
 
-func (this *LRUCache) AddNode(key, value int) {
-	this.Cache[key] = value
-	this.Tail.Next = &Node{
+func (this *LRUCache) AddNode(key int, value int) {
+	node := &Node{
 		Val:  value,
 		Key:  key,
-		Pre:  this.Tail,
-		Next: nil,
 	}
-	this.Tail = this.Tail.Next
+
+	this.Head.Next.Pre = node
+	node.Next = this.Head.Next
+	this.Head.Next = node
+	node.Pre = this.Head
+
 	this.Num++
+	this.Cache[key] = node
+}
+
+func (this *LRUCache) RemoveNode(node *Node) {
+	node.Pre.Next = node.Next
+	node.Next.Pre = node.Pre
 }
 
 

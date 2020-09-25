@@ -1,14 +1,16 @@
 package my_lru_cache
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
 func TestLRUCache(t *testing.T) {
-	test := Constructor(10)
-	test.Head.Next = &Node{
-		Val:  1,
-		Key:  2,
-		Pre:  test.Head,
-		Next: nil,
-	}
-
+	test := Constructor(2)
+	test.Put(2, 1)
+	test.Put(2, 2)
+	fmt.Println(test.Get(2))
+	test.Put(1, 1)
+	test.Put(4, 1)
+	fmt.Println(test.Get(2))
 }
