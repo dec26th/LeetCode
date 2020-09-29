@@ -19,7 +19,7 @@ func partition(nums []int, left int, right int) int {
 
 	for i := index; i <= right; i++ {
 		if nums[i] < nums[pivot] {
-			nums[i], nums[pivot] = nums[pivot], nums[i]
+			nums[i], nums[index] = nums[index], nums[i]
 			index += 1
 		}
 	}
