@@ -2,20 +2,44 @@ package get_permutation
 
 import "strconv"
 
+var (
+	totalNum int
+	kth int
+	mark []bool
+	result string
+)
+
 func getPermutation(n int, k int) string {
-	return  backTrack(n, k, 1, "")
+	totalNum, kth = n, k
+	if n == k && n == 1 {
+		return "1"
+	}
+	mark = make([]bool, n + 1)
+	backTrack( 0)
+	return result
 }
 
-func backTrack(n, k, layer int, result string) string {
-	num := stageMultiply(n - layer)
+func backTrack(temp int) {
+	if temp == totalNum {
+		return
+	}
+	num := stageMultiply(totalNum - temp - 1)
+	for i := 1; i <= totalNum; i++ {
+		if mark[i] {
+			continue
+		}
 
-	if num > k {
-		layer ++
-		result += strconv.Itoa(layer)
-		backTrack(n, k, layer, result)
+		if num < kth && num > 0 {
+			kth -= num
+			continue
+		}
+		result += strconv.Itoa(i)
+		mark[i] = true
+		temp++
+		backTrack(temp)
+		return
 	}
 
-	return  ""
 
 }
 
