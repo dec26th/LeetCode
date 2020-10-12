@@ -32,29 +32,16 @@ func reverseList(head *ListNode) *ListNode {
 }
 
 func reverseListTowPointer(head *ListNode) *ListNode {
-	if head == nil {
-		return nil
-	}
-	count := 0
-	cur := new(ListNode)
-	pre := head
+	pre := &ListNode{}
+	cur := head
 
-	for pre != nil {
-		if count == 0 {
-			temp := pre.Next
-			pre.Next = nil
-			cur = pre
-			pre = temp
-			count++
-			continue
-		}
-		temp := pre.Next
-		pre.Next = cur
-		cur = pre
-		pre = temp
-		count++
+	for cur != nil {
+		nxt := cur.Next
+		cur.Next = pre
+		pre = cur
+		cur = nxt
 	}
-	return cur
+	return pre
 }
 
 func reverse_list_two(head *ListNode) *ListNode {
