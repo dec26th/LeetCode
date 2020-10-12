@@ -12,18 +12,16 @@ func HeapSort(nums []int) []int {
 	return nums
 }
 
-func buildMaxHeap(nums []int, len int) []int {
+func buildMaxHeap(nums []int, len int) {
 	for i := len / 2; i >= 0; i-- {
-		nums[0], nums[i] = nums[i], nums[0]
-		heapify(nums, 0, len)
+		heapify(nums, i, len)
 	}
-	return nums
 }
 
 func heapify(nums []int, i int, len int) {
 	left := 2*i + 1
 	right := 2*i + 2
-	largest := 1
+	largest := i
 	if left < len && nums[left] > nums[largest] {
 		largest = left
 	}
