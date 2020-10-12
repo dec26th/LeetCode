@@ -14,7 +14,7 @@ func longestConsecutive(nums []int) int {
 		temLength := 0
 		if res, ok := numsMap[v]; ok && res {
 			findSmaller(v, &temLength)
-			findBigger(v + 1, &temLength)
+			findBigger(v+1, &temLength)
 			if temLength > longestLength {
 				longestLength = temLength
 			}
@@ -26,7 +26,7 @@ func longestConsecutive(nums []int) int {
 func findSmaller(target int, tempLength *int) {
 	for {
 		if res, ok := numsMap[target]; ok && res {
-			*tempLength ++
+			*tempLength++
 			numsMap[target] = false
 			target--
 
@@ -39,7 +39,7 @@ func findSmaller(target int, tempLength *int) {
 func findBigger(target int, tempLength *int) {
 	for {
 		if res, ok := numsMap[target]; ok && res {
-			*tempLength ++
+			*tempLength++
 			numsMap[target] = false
 			target++
 

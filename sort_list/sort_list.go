@@ -1,8 +1,8 @@
 package sort_list
 
 type ListNode struct {
-	Val			int
-	Next		*ListNode
+	Val  int
+	Next *ListNode
 }
 
 func sortList(head *ListNode) *ListNode {
@@ -29,5 +29,3 @@ func quickSort(head, end *ListNode) {
 	quickSort(head, index)
 	quickSort(index.Next, end)
 }
-
-

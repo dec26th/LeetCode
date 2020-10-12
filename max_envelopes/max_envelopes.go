@@ -19,7 +19,7 @@ func maxEnvelopes(envelopes [][]int) int {
 	for i := 0; i < len(envelopes); i++ {
 		for j := 0; j < i; j++ {
 			if envelopes[i][0] > envelopes[j][0] && envelopes[i][1] > envelopes[j][1] {
-				dp[i] = max(dp[j] + 1, dp[i])
+				dp[i] = max(dp[j]+1, dp[i])
 				maxNum = max(dp[i], maxNum)
 			}
 		}

@@ -6,5 +6,5 @@ import (
 )
 
 func TestFindKthLargest(t *testing.T) {
-	fmt.Println(findKthLargest([]int {1, 3, 5, 2, 4}, 2))
+	fmt.Println(findKthLargest([]int{1, 3, 5, 2, 4}, 2))
 }

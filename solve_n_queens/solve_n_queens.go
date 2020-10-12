@@ -3,7 +3,7 @@ package solve_n_queens
 var result [][]string
 var num int
 
-func solveNQueens(n int) [][] string {
+func solveNQueens(n int) [][]string {
 	num = n
 	board := new([]string)
 	for i := 0; i < n; i++ {
@@ -45,7 +45,7 @@ func isVaild(board *[]string, row, col int) bool {
 
 	i = row - 1
 	j := col - 1
-	for i >=0 && j >= 0 {
+	for i >= 0 && j >= 0 {
 		if (*board)[i][j] == 'Q' {
 			return false
 		}

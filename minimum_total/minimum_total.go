@@ -16,36 +16,35 @@ func minimumTotal(triangle [][]int) int {
 		}
 	}
 
-	for i := 1; i < len(dp) - 1; i++ {
-		dp[i][0] = dp[i - 1][0] + dp[i][0]
+	for i := 1; i < len(dp)-1; i++ {
+		dp[i][0] = dp[i-1][0] + dp[i][0]
 		length := len(dp[i])
-		dp[i][length - 1] = dp[i - 1][length - 2] + dp[i][length - 1]
+		dp[i][length-1] = dp[i-1][length-2] + dp[i][length-1]
 
-		for j := 1; j < length - 1; j++ {
-			dp[i][j] = min(dp[i - 1][j], dp[i - 1][j - 1]) + dp[i][j]
+		for j := 1; j < length-1; j++ {
+			dp[i][j] = min(dp[i-1][j], dp[i-1][j-1]) + dp[i][j]
 		}
 	}
 
 	lenOfDP := len(dp) - 1
 	length := len(dp[lenOfDP])
-	dp[lenOfDP][0] = dp[lenOfDP - 1][0] + dp[lenOfDP][0]
+	dp[lenOfDP][0] = dp[lenOfDP-1][0] + dp[lenOfDP][0]
 	if dp[lenOfDP][0] < minimum {
 		minimum = dp[lenOfDP][0]
 	}
-	dp[lenOfDP][length - 1] = dp[lenOfDP - 1][length - 2] + dp[lenOfDP][length - 1]
-	if dp[lenOfDP][length - 1] < minimum {
-		minimum = dp[lenOfDP][length - 1]
+	dp[lenOfDP][length-1] = dp[lenOfDP-1][length-2] + dp[lenOfDP][length-1]
+	if dp[lenOfDP][length-1] < minimum {
+		minimum = dp[lenOfDP][length-1]
 	}
 
-	for j := 1; j  < length - 1; j++ {
-		dp[lenOfDP][j] = min(dp[lenOfDP - 1][j - 1], dp[lenOfDP - 1][j]) + dp[lenOfDP][j]
+	for j := 1; j < length-1; j++ {
+		dp[lenOfDP][j] = min(dp[lenOfDP-1][j-1], dp[lenOfDP-1][j]) + dp[lenOfDP][j]
 		if dp[lenOfDP][j] < minimum {
 			minimum = dp[lenOfDP][j]
 		}
 	}
 	return minimum
 }
-
 
 func min(x, y int) int {
 	if x < y {

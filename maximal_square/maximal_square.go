@@ -16,7 +16,7 @@ func maximalSquare(matrix [][]byte) int {
 	for i := 1; i < len(matrix); i++ {
 		for j := 1; j < len(matrix[0]); j++ {
 			if dp[i][j] == 1 {
-				dp[i][j] = min(min(dp[i - 1][j], dp[i][j - 1]), dp[i - 1][j - 1]) + 1
+				dp[i][j] = min(min(dp[i-1][j], dp[i][j-1]), dp[i-1][j-1]) + 1
 				if dp[i][j] > maxSide {
 					maxSide = dp[i][j]
 				}

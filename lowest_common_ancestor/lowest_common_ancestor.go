@@ -1,9 +1,9 @@
 package lowest_common_ancestor
 
 type TreeNode struct {
-	Val			int
-	Left		*TreeNode
-	Right		*TreeNode
+	Val   int
+	Left  *TreeNode
+	Right *TreeNode
 }
 
 func lowestCommonAncestor(root, q, p *TreeNode) *TreeNode {

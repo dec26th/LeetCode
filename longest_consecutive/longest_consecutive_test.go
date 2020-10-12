@@ -6,6 +6,6 @@ import (
 )
 
 func TestLongestConsecutive(t *testing.T) {
-	test := []int {-1, 0, 1}
+	test := []int{-1, 0, 1}
 	fmt.Println(longestConsecutive(test))
 }

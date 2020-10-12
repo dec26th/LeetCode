@@ -9,15 +9,14 @@ func findLengthOfLCIS(nums []int) int {
 	}
 	dp := make([]int, lenOfNums)
 
-
-	for i := 0; i < lenOfNums - 1; i++ {
+	for i := 0; i < lenOfNums-1; i++ {
 		if dp[i] == 0 {
 			dp[i] = 1
 		}
 
-		if nums[i + 1] > nums[i] {
-			dp[i + 1] = dp[i] + 1
-			maxLength = max(dp[i + 1], maxLength)
+		if nums[i+1] > nums[i] {
+			dp[i+1] = dp[i] + 1
+			maxLength = max(dp[i+1], maxLength)
 		}
 	}
 

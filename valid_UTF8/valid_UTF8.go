@@ -1,6 +1,5 @@
 package valid_UTF8
 
-
 func validUtf8(data []int) bool {
 	if len(data) == 0 {
 		return false
@@ -13,7 +12,7 @@ func validUtf8(data []int) bool {
 
 	for i := 1; i < len(data); i++ {
 
-		if data[i] & (3 << 6) != 1 << 7 {
+		if data[i]&(3<<6) != 1<<7 {
 			continue
 		}
 		byteLength--
@@ -22,22 +21,21 @@ func validUtf8(data []int) bool {
 }
 
 func getByteLength(data int) int {
-	if data >> 7 == 0 {
+	if data>>7 == 0 {
 		return 0
 	}
 
-	if data >> 5 == 6 {
+	if data>>5 == 6 {
 		return 1
 	}
 
-	if data >> 4 == 14 {
+	if data>>4 == 14 {
 		return 2
 	}
 
-	if data >> 3 == 30 {
+	if data>>3 == 30 {
 		return 3
 	}
 
 	return -1
 }
-

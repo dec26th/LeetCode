@@ -7,7 +7,7 @@ func mySqrt(x int) int {
 	biSearch := x / 2
 	left, right := 0, x
 	for {
-		if sqrt(biSearch) <= x && sqrt(biSearch + 1) > x {
+		if sqrt(biSearch) <= x && sqrt(biSearch+1) > x {
 			return biSearch
 		}
 		if sqrt(biSearch) < x {
@@ -28,5 +28,3 @@ func mySqrt(x int) int {
 func sqrt(x int) int {
 	return x * x
 }
-
-

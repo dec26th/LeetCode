@@ -5,19 +5,15 @@ package c_queue
 // 分别完成在队列尾部插入整数和在队列头部删除整数的功能。(若队列中没有元素，deleteHead 操作返回 -1 )
 
 type CQueue struct {
-
 }
-
 
 func Constructor() CQueue {
 
 }
 
-
-func (this *CQueue) AppendTail(value int)  {
+func (this *CQueue) AppendTail(value int) {
 
 }
-
 
 func (this *CQueue) DeleteHead() int {
 

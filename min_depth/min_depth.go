@@ -1,14 +1,14 @@
 package min_depth
 
 type ListNode struct {
-	 Val		int
-	 Left		*ListNode
-	 Right		*ListNode
+	Val   int
+	Left  *ListNode
+	Right *ListNode
 }
 
 var (
 	visited map[*ListNode]bool
-	queue []*ListNode
+	queue   []*ListNode
 )
 
 func minDepth(root *ListNode) int {
@@ -23,7 +23,7 @@ func minDepth(root *ListNode) int {
 
 		var indexToPoll int
 		lenOfQueue := len(queue)
-		for indexToPoll < lenOfQueue - 1  {
+		for indexToPoll < lenOfQueue-1 {
 			tempNode := queue[0]
 			queue := queue[1:]
 			if tempNode.Left == nil && tempNode.Right == nil {
@@ -37,9 +37,9 @@ func minDepth(root *ListNode) int {
 				queue = append(queue, tempNode.Right)
 			}
 
-			indexToPoll ++
+			indexToPoll++
 		}
-		depth ++
+		depth++
 	}
 	return depth
 }

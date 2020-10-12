@@ -1,9 +1,9 @@
 package zigzag_level_order
 
 type TreeNode struct {
-	Val			int
-	Left		*TreeNode
-	Right		*TreeNode
+	Val   int
+	Left  *TreeNode
+	Right *TreeNode
 }
 
 var (
@@ -41,7 +41,6 @@ func zigzagLevelOrder(root *TreeNode) [][]int {
 		if len(tempResult1) != 0 {
 			result = append(result, tempResult1)
 		}
-
 
 		for len(stack2) != 0 {
 			index := len(stack2) - 1

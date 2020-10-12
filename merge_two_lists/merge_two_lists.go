@@ -3,9 +3,10 @@ package merge_two_lists
 import "sort"
 
 type ListNode struct {
-	Val			int
-	Next		*ListNode
+	Val  int
+	Next *ListNode
 }
+
 func mergeTwoLists(l1 *ListNode, l2 *ListNode) *ListNode {
 	valueList := *new([]int)
 

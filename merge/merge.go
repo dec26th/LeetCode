@@ -17,9 +17,9 @@ func merge(intervals [][]int) [][]int {
 	for i := 1; i < len(intervals); i++ {
 		lenOfResult := len(result)
 		for index, value := range result {
-			switch  {
+			switch {
 			case intervals[i][0] > value[1]:
-				if lenOfResult == index + 1 {
+				if lenOfResult == index+1 {
 					result = append(result, intervals[i])
 				}
 			case intervals[i][1] < value[1]:
