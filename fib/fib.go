@@ -8,7 +8,7 @@ func fib(N int) int {
 	pp, p := 0, 1
 
 	for i := 2; i <= N; i++ {
-		now = p + pp
+		now = (p + pp) % (1e9 + 7)
 		pp = p
 		p = now
 	}
