@@ -17,7 +17,7 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 
 	pass_num := 0
 	count := 0
-	var head, body, last_body = &ListNode{}, &ListNode{}, &ListNode{}
+	var head, body, lastBody = &ListNode{}, &ListNode{}, &ListNode{}
 
 	for l1 != nil && l2 != nil {
 
@@ -30,21 +30,21 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 
 		body.Val = ((l1.Val + l2.Val) + pass_num) % 10
 		pass_num = (l1.Val + l2.Val + pass_num) / 10
-		last_body = body
+		lastBody = body
 		body = body.Next
 		l1 = l1.Next
 		l2 = l2.Next
 	}
 
-	last_body.Next = nil
-	body = last_body
+	lastBody.Next = nil
+	body = lastBody
 
 	for l1 != nil {
 		body.Next = &ListNode{
 			Val: (l1.Val + pass_num) % 10,
 		}
 		pass_num = (l1.Val + pass_num) / 10
-		last_body = body
+		lastBody = body
 		body = body.Next
 		l1 = l1.Next
 	}
@@ -54,7 +54,7 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 			Val: (l2.Val + pass_num) % 10,
 		}
 		pass_num = (l2.Val + pass_num) / 10
-		last_body = body
+		lastBody = body
 		body = body.Next
 		l2 = l2.Next
 	}
