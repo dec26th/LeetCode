@@ -23,15 +23,15 @@ func findNumberIn2DArrayLine(matrix [][]int, target int) bool {
 		return false
 	}
 	lenOfColumn := len(matrix[0])
-	line, colum := 0, lenOfColumn-1
-	for line < lenOfLine && colum >= 0 {
-		if matrix[line][colum] == target {
+	line, column := 0, lenOfColumn-1
+	for line < lenOfLine && column >= 0 {
+		if matrix[line][column] == target {
 			return true
 		}
-		if matrix[line][colum] > target {
-			colum -= 1
+		if matrix[line][column] > target {
+			column -= 1
 
-		} else if matrix[line][colum] < target {
+		} else if matrix[line][column] < target {
 			line += 1
 
 		}

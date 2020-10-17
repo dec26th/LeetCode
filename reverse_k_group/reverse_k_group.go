@@ -46,3 +46,42 @@ func reverse(start *ListNode) *ListNode {
 
 	return pre
 }
+
+func MyReverseKGroup(head *ListNode, k int) *ListNode {
+	dum := &ListNode{
+		Next: head,
+	}
+	pre := dum
+	end := dum
+
+	for end.Next != nil {
+		for i := 0; i < k && end != nil; i++ {
+			end = end.Next
+		}
+		if end == nil {
+			break
+		}
+
+		start := pre.Next
+		next := end.Next
+		end.Next = nil
+
+		pre.Next = MyReverse(start)
+		start.Next = next
+		pre = start
+		end = pre
+	}
+	return dum.Next
+}
+
+func MyReverse(head *ListNode) *ListNode {
+	var pre *ListNode
+	cur := head
+	for cur != nil {
+		nxt := cur.Next
+		cur.Next = pre
+		pre = cur
+		cur = nxt
+	}
+	return pre
+}

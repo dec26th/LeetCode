@@ -42,5 +42,26 @@ func inorderTraversalNotResursion(root *TreeNode) []int {
 }
 
 func postorderTraversalNotRecursion(root *TreeNode) []int {
-	return []int{}
+	if root == nil {
+		return []int {}
+	}
+	result := *new([]int)
+	stack := *new([]*TreeNode)
+	stack = append(stack, root)
+
+	for len(stack) > 0 {
+		root = stack[0]
+		stack = stack[1:]
+		result = append([]int {root.Val}, result...)
+
+		if root.Left != nil {
+			stack = append([]*TreeNode{root.Left}, stack...)
+		}
+
+		if root.Right != nil {
+			stack = append([]*TreeNode{root.Right}, stack...)
+		}
+	}
+
+	return  result
 }
