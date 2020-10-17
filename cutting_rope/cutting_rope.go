@@ -10,13 +10,13 @@ func cuttingRope(n int) int {
 		return n - 1
 	}
 
-	a, b := n / 3, n % 3
+	a, b := n/3, n%3
 
 	switch b {
 	case 0:
 		return pow(3, a)
 	case 1:
-		return pow(3, a - 1) * 4
+		return pow(3, a-1) * 4
 	case 2:
 		return pow(3, a) * 2
 	}
@@ -30,4 +30,3 @@ func pow(a, b int) int {
 	}
 	return result
 }
-

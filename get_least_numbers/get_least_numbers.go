@@ -1,6 +1,5 @@
 package get_least_numbers
 
-
 func getLeastNumbers(arr []int, k int) []int {
 	if k == 0 || len(arr) == 0 {
 		return []int{}
@@ -12,13 +11,13 @@ func getLeastNumbers(arr []int, k int) []int {
 func quickSearch(arr []int, start, end, k int) {
 
 	index := partition(arr, start, end)
-	if index == k - 1 {
+	if index == k-1 {
 		return
 	}
-	if index > k - 1 {
+	if index > k-1 {
 		quickSearch(arr, start, index, k)
 	} else {
-		quickSearch(arr, index + 1, end, k)
+		quickSearch(arr, index+1, end, k)
 	}
 }
 

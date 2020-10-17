@@ -79,14 +79,12 @@ func bfs(board [][]byte, word []byte, i, j int, mark [][]int) bool {
 
 	if j < lineOfBoard-1 && board[i][j+1] == word[0] && mark[i][j+1] != 1 {
 
-		mark[i][j + 1] = 1
+		mark[i][j+1] = 1
 		if bfs(board, word[1:], i, j+1, mark) {
 			return true
 		}
-		mark[i][j + 1] = 0
+		mark[i][j+1] = 0
 	}
 
 	return false
 }
-
-

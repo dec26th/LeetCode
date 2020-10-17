@@ -4,7 +4,6 @@ package my_pow
 
 // 实现函数double Power(double base, int exponent)，求base的exponent次方。不得使用库函数，同时不需要考虑大数问题。
 
-
 func myPow(x float64, n int) float64 { //timeout
 	if x == 0 {
 		return x
@@ -21,5 +20,3 @@ func myPow(x float64, n int) float64 { //timeout
 	}
 	return result
 }
-
-
