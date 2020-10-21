@@ -6,42 +6,23 @@ import (
 	"sync"
 )
 
-var wg = sync.WaitGroup{}
-
 func main() {
-	runtime.GOMAXPROCS(3)
-	chan1 := make(chan int, 10)
-	chan2 := make(chan int, 10)
+	runtime.GOMAXPROCS(1)
 
-	wg.Add(3)
-	go func() {
-		defer wg.Done()
-		for i := 0; i < 100; i++ {
-			chan1 <- i
-			fmt.Println("chan1")
-		}
-	}()
-
-	go func () {
-		defer wg.Done()
-		for i := 100; i < 200; i++ {
-			chan2 <- i
-			fmt.Println("chan2")
-		}
-	}()
-
-	go func() {
-		defer wg.Done()
-		for {
-			select {
-			case c := <-chan1:
-				fmt.Printf("select from chan1 %d \n", c)
-			case c := <-chan2:
-				fmt.Printf("select from chan2 %d \n", c)
-
-			}
-		}
-	}()
-
+	count := 10
+	wg := sync.WaitGroup{}
+	wg.Add(count * 2)
+	for i := 0; i < count; i++ {
+		go func() {
+			fmt.Printf("[%d]", i)
+			wg.Done()
+		}()
+	}
+	for i := 0; i < count; i++ {
+		go func(i int) {
+			fmt.Printf("-%d-", i)
+			wg.Done()
+		}(i)
+	}
 	wg.Wait()
 }
