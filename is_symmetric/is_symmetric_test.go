@@ -4,10 +4,10 @@ import "testing"
 
 func TestIsSymmetric(t *testing.T) {
 	test := &TreeNode{
-		Val:   1,
-		Left:  &TreeNode{
-			Val:   2,
-			Left:  &TreeNode{
+		Val: 1,
+		Left: &TreeNode{
+			Val: 2,
+			Left: &TreeNode{
 				Val:   3,
 				Left:  nil,
 				Right: nil,
@@ -19,8 +19,8 @@ func TestIsSymmetric(t *testing.T) {
 			},
 		},
 		Right: &TreeNode{
-			Val:   2,
-			Left:  &TreeNode{
+			Val: 2,
+			Left: &TreeNode{
 				Val:   2,
 				Left:  nil,
 				Right: nil,

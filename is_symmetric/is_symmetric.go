@@ -5,9 +5,9 @@ package is_symmetric
 // 请实现一个函数，用来判断一棵二叉树是不是对称的。如果一棵二叉树和它的镜像一样，那么它是对称的。
 
 type TreeNode struct {
-	Val		int
-	Left	*TreeNode
-	Right	*TreeNode
+	Val   int
+	Left  *TreeNode
+	Right *TreeNode
 }
 
 func isSymmetric(root *TreeNode) bool {
@@ -22,10 +22,10 @@ func judgeSymmetric(left, right *TreeNode) bool {
 		return true
 	}
 	if left == nil && right != nil {
-		 return false
+		return false
 	}
 	if right == nil && left != nil {
-		 return false
+		return false
 	}
 
 	if left.Val == right.Val {

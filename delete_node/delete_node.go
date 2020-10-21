@@ -7,8 +7,8 @@ package delete_node
 //返回删除后的链表的头节点
 
 type ListNode struct {
-	Val		int
-	Next	*ListNode
+	Val  int
+	Next *ListNode
 }
 
 func deleteNode(head *ListNode, val int) *ListNode {
