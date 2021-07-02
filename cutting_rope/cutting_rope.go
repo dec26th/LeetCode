@@ -14,11 +14,11 @@ func cuttingRope(n int) int {
 
 	switch b {
 	case 0:
-		return pow(3, a)
+		return pow(3, a) % 1000000007
 	case 1:
-		return pow(3, a-1) * 4
+		return (pow(3, a-1) * 4) % 1000000007
 	case 2:
-		return pow(3, a) * 2
+		return (pow(3, a) * 2) % 1000000007
 	}
 	return 0
 }
@@ -26,7 +26,7 @@ func cuttingRope(n int) int {
 func pow(a, b int) int {
 	result := 1
 	for i := 0; i < b; i++ {
-		result *= a
+		result = (result * a) % 1000000007
 	}
 	return result
 }
