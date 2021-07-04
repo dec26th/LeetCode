@@ -1,2 +1,1 @@
-# Leet Code In GO
-**Just Go**
+# A leetcode a day, weakness away

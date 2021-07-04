@@ -15,8 +15,13 @@ func myPow(x float64, n int) float64 { //timeout
 		x = 1 / x
 		n = -n
 	}
-	for i := 0; i < n; i++ {
-		result *= x
+
+	for n > 0 {
+		if n & 1 == 1 {
+			result *= x
+		}
+		x *= x;
+		n >>= 1
 	}
 	return result
 }
