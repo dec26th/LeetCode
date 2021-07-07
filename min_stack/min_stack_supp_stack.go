@@ -30,7 +30,7 @@ func (this *MinStackTwo) Top() int {
 	return this.stack[len(this.stack)-1]
 }
 
-func (this *MinStackTwo) GetMin() int {
+func (this *MinStackTwo) Min() int {
 	return this.MinStackTwo[len(this.MinStackTwo)-1]
 }
 

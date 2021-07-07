@@ -7,15 +7,11 @@ import (
 
 func TestMinStack(t *testing.T) {
 	test := Constructor()
-	test.Push(2)
+	test.Push(-2)
 	test.Push(0)
-	test.Push(3)
-	test.Push(0)
-	fmt.Println(test.GetMin())
+	test.Push(-1)
+	fmt.Println(test.Min())
+	fmt.Println(test.Top())
 	test.Pop()
-	fmt.Println(test.GetMin())
-	test.Pop()
-	fmt.Println(test.GetMin())
-	test.Pop()
-	fmt.Println(test.GetMin())
+	fmt.Println(test.Min())
 }
