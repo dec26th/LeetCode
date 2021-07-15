@@ -41,3 +41,28 @@ func search(nums []int, target int) int {
 
 	return index
 }
+
+func searchNum(nums []int, target int) int {
+	if len(nums) == 0 {
+		return 0
+	}
+	if len(nums) == 1 {
+		if target == nums[0] {
+			return 1
+		}
+		return 0
+	}
+	left, right := 0, len(nums) - 1
+	for left <= right {
+		if nums[left] < target {
+			left ++
+		}
+		if nums[right] > target {
+			right--
+		}
+		if nums[left] == target && nums[right] == target {
+			return right - left + 1
+		}
+	}
+	return 0
+}
