@@ -52,10 +52,10 @@ func searchNum(nums []int, target int) int {
 		}
 		return 0
 	}
-	left, right := 0, len(nums) - 1
+	left, right := 0, len(nums)-1
 	for left <= right {
 		if nums[left] < target {
-			left ++
+			left++
 		}
 		if nums[right] > target {
 			right--

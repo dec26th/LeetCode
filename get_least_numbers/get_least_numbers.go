@@ -9,7 +9,6 @@ func getLeastNumbers(arr []int, k int) []int {
 }
 
 func quickSearch(arr []int, start, end, k int) {
-
 	index := partition(arr, start, end)
 	if index == k-1 {
 		return

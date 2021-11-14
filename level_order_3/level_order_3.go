@@ -1,8 +1,8 @@
 package level_order_3
 
 type TreeNode struct {
-	Val int
-	Left *TreeNode
+	Val   int
+	Left  *TreeNode
 	Right *TreeNode
 }
 
@@ -23,18 +23,18 @@ func levelOrder(root *TreeNode) [][]int {
 		for i := 0; i < length; i++ {
 			temp[i] = nodeList[i].Val
 			if left2Right {
-				if nodeList[length - 1 - i].Right != nil {
-					nodeList = append(nodeList,nodeList[length - 1 - i].Right)
+				if nodeList[length-1-i].Right != nil {
+					nodeList = append(nodeList, nodeList[length-1-i].Right)
 				}
-				if nodeList[length - 1 - i].Left != nil {
-					nodeList = append(nodeList, nodeList[length - 1 - i].Left)
+				if nodeList[length-1-i].Left != nil {
+					nodeList = append(nodeList, nodeList[length-1-i].Left)
 				}
 			} else if right2Left {
-				if nodeList[length - 1 - i].Left != nil {
-					nodeList = append(nodeList, nodeList[length - 1 - i].Left)
+				if nodeList[length-1-i].Left != nil {
+					nodeList = append(nodeList, nodeList[length-1-i].Left)
 				}
-				if nodeList[length - 1 - i].Right != nil {
-					nodeList = append(nodeList,nodeList[length - 1 - i].Right)
+				if nodeList[length-1-i].Right != nil {
+					nodeList = append(nodeList, nodeList[length-1-i].Right)
 				}
 			}
 

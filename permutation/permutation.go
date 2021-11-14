@@ -15,7 +15,6 @@ func dfs(byteList []byte, start int, strs *[]string) {
 			*strs = append(*strs, string(byteList))
 			strMap[string(byteList)] = 1
 		}
-
 	} else {
 		for i := start; i < len(byteList); i++ {
 			if i != start {

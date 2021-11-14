@@ -19,12 +19,12 @@ func findContinuousSequence(target int) [][]int {
 	return result
 }
 
-func sum(start, end int)int {
+func sum(start, end int) int {
 	return (start + end) * (end - start + 1) / 2
 }
 
 func getSlice(start, end int) []int {
-	result := make([]int, end - start + 1)
+	result := make([]int, end-start+1)
 	for i := 0; i < len(result); i++ {
 		result[i] = start + i
 	}

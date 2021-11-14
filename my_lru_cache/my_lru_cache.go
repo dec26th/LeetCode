@@ -49,7 +49,6 @@ func (this *LRUCache) Put(key int, value int) {
 			this.AddNode(key, value)
 			return
 		}
-
 	} else {
 		node.Val = value
 		this.ModifyPriority(node)

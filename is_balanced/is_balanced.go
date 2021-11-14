@@ -1,9 +1,9 @@
 package is_balanced
 
 type TreeNode struct {
-	Val		int
-	Left 	*TreeNode
-	Right 	*TreeNode
+	Val   int
+	Left  *TreeNode
+	Right *TreeNode
 }
 
 func isBalanced(root *TreeNode) bool {
@@ -38,7 +38,7 @@ func isChildrenBalanced(root *TreeNode) bool {
 		depthRight = getDepth(root.Right, 0)
 	}
 
-	if abs(depthLeft - depthRight) > 1 {
+	if abs(depthLeft-depthRight) > 1 {
 		return false
 	}
 

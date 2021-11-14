@@ -1,13 +1,15 @@
 package kth_largest
 
 type TreeNode struct {
-	Val 	int
-	Left 	*TreeNode
-	Right 	*TreeNode
+	Val   int
+	Left  *TreeNode
+	Right *TreeNode
 }
 
-var result int
-var kth int
+var (
+	result int
+	kth    int
+)
 
 func kthLargest(root *TreeNode, k int) int {
 	kth = k
@@ -23,7 +25,7 @@ func getKthLargest(root *TreeNode) {
 	if kth == 0 {
 		return
 	}
-	kth --
+	kth--
 	if kth == 0 {
 		result = root.Val
 		return

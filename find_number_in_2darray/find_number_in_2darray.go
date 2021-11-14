@@ -30,10 +30,8 @@ func findNumberIn2DArrayLine(matrix [][]int, target int) bool {
 		}
 		if matrix[line][column] > target {
 			column -= 1
-
 		} else if matrix[line][column] < target {
 			line += 1
-
 		}
 	}
 	return false

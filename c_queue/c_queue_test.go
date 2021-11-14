@@ -20,5 +20,4 @@ func TestCQueue_AppendTail(t *testing.T) {
 	fmt.Println(CQueue.DeleteHead())
 	fmt.Println(CQueue.DeleteHead())
 	fmt.Println(CQueue.DeleteHead())
-
 }

@@ -5,7 +5,6 @@ const (
 	MinHeap = "MIN_HEAP"
 )
 
-
 func BuildHeap(raw []int, heapType string) []int {
 	switch heapType {
 	case MaxHeap:
@@ -19,19 +18,19 @@ func BuildHeap(raw []int, heapType string) []int {
 
 func buildMaxHeap(raw []int) {
 	for i := len(raw) / 2; i >= 0; i-- {
-		Heapify(raw, i, len(raw) - 1, MaxHeap)
+		Heapify(raw, i, len(raw)-1, MaxHeap)
 	}
 }
 
 func buildMinHeap(raw []int) {
 	for i := len(raw) / 2; i >= 0; i-- {
-		Heapify(raw, i, len(raw) - 1, MinHeap)
+		Heapify(raw, i, len(raw)-1, MinHeap)
 	}
 }
 
 func Heapify(raw []int, index, heapSize int, heapType string) {
-	left := 2 * index + 1
-	right := 2 * index + 2
+	left := 2*index + 1
+	right := 2*index + 2
 
 	switch heapType {
 	case MaxHeap:
@@ -44,7 +43,7 @@ func Heapify(raw []int, index, heapSize int, heapType string) {
 		}
 		if larger != index {
 			raw[larger], raw[index] = raw[index], raw[larger]
-			Heapify(raw, larger, heapSize,heapType)
+			Heapify(raw, larger, heapSize, heapType)
 		}
 
 	case MinHeap:
@@ -57,7 +56,7 @@ func Heapify(raw []int, index, heapSize int, heapType string) {
 		}
 		if smaller != index {
 			raw[smaller], raw[index] = raw[index], raw[smaller]
-			Heapify(raw, smaller, heapSize,heapType)
+			Heapify(raw, smaller, heapSize, heapType)
 		}
 	}
 }

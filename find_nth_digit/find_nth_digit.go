@@ -6,16 +6,16 @@ func findNthDigit(n int) int {
 	var result int
 	x, y := 1, 9
 
-	for n > x * y {
+	for n > x*y {
 		n -= x * y
-		x ++
+		x++
 		y *= 10
 	}
 
 	ten := getTen(x - 1)
 
 	z := (n - 1) % x
-	n =(n - 1) / x
+	n = (n - 1) / x
 
 	temp := ten + n
 
@@ -30,7 +30,7 @@ func getTen(n int) int {
 	result := 1
 	for n != 0 {
 		result *= 10
-		n --
+		n--
 	}
 
 	return result

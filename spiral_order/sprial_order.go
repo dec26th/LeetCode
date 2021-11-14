@@ -5,43 +5,43 @@ func spiralOrder(matrix [][]int) []int {
 		return []int{}
 	}
 
-	left, right, top, bottom := 0, len(matrix[0]) - 1, 0, len(matrix) - 1
-	result := make([]int, len(matrix) * len(matrix[0]))
+	left, right, top, bottom := 0, len(matrix[0])-1, 0, len(matrix)-1
+	result := make([]int, len(matrix)*len(matrix[0]))
 	index := 0
 
 	for {
-		for i := left; i < right + 1; i++ {
+		for i := left; i < right+1; i++ {
 			result[index] = matrix[top][i]
-			index ++
+			index++
 		}
-		top ++
+		top++
 		if top > bottom {
 			break
 		}
 
-		for i := top; i < bottom + 1; i++ {
+		for i := top; i < bottom+1; i++ {
 			result[index] = matrix[i][right]
-			index ++
+			index++
 		}
-		right --
+		right--
 		if left > right {
 			break
 		}
 
 		for i := right; i >= left; i-- {
 			result[index] = matrix[bottom][i]
-			index ++
+			index++
 		}
-		bottom --
+		bottom--
 		if bottom < top {
 			break
 		}
 
 		for i := bottom; i >= top; i-- {
 			result[index] = matrix[i][left]
-			index ++
+			index++
 		}
-		left ++
+		left++
 		if left > right {
 			break
 		}

@@ -1,7 +1,6 @@
 package find_length_of_LCIS
 
 func findLengthOfLCIS(nums []int) int {
-
 	maxLength := 1
 	lenOfNums := len(nums)
 	if lenOfNums == 0 {

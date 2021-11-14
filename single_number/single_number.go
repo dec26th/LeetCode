@@ -46,7 +46,6 @@ func singleNumberOtherThree(nums []int) int {
 	return 0
 }
 
-
 // state machine
 func singleNumberOhterThreeBit(nums []int) int {
 	one, two := 0, 0
@@ -110,7 +109,7 @@ func twoNumberOnceDivide(nums []int) []int {
 	offset := 0
 	for {
 		if (temp & 1) == 0 {
-			offset ++
+			offset++
 			temp = temp >> 1
 		} else {
 			break

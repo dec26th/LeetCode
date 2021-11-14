@@ -1,10 +1,8 @@
 package level_order_2
 
-
-
 type TreeNode struct {
-	Val int
-	Left *TreeNode
+	Val   int
+	Left  *TreeNode
 	Right *TreeNode
 }
 

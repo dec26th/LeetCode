@@ -13,7 +13,6 @@ func TestCopyRandomList(t *testing.T) {
 	node.Next = node2
 	node.Val = 1
 
-
 	node2.Random = node2
 	node2.Val = 2
 

@@ -25,7 +25,7 @@ func TestSplit(t *testing.T) {
 	s := ".1"
 
 	result := strings.Split(s, ".")
-	for _, v := range result{
+	for _, v := range result {
 		fmt.Println(v)
 	}
 }

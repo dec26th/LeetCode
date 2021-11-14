@@ -1,8 +1,8 @@
 package max_depth
 
 type TreeNode struct {
-	Val int
-	Left *TreeNode
+	Val   int
+	Left  *TreeNode
 	Right *TreeNode
 }
 
@@ -14,10 +14,10 @@ func getDepth(root *TreeNode, depth int) int {
 	if root == nil {
 		return depth
 	}
-	return max(getDepth(root.Left, depth + 1), getDepth(root.Right, depth + 1))
+	return max(getDepth(root.Left, depth+1), getDepth(root.Right, depth+1))
 }
 
-func max(x, y int)int {
+func max(x, y int) int {
 	if x < y {
 		return y
 	}

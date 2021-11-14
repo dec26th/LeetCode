@@ -1,15 +1,16 @@
 package copy_random_list
 
-//请实现 copyRandomList 函数，复制一个复杂链表。在复杂链表中，每个节点除了有一个 next 指针指向下一个节点，
-//还有一个 random 指针指向链表中的任意节点或者 null。
+// 请实现 copyRandomList 函数，复制一个复杂链表。在复杂链表中，每个节点除了有一个 next 指针指向下一个节点，
+// 还有一个 random 指针指向链表中的任意节点或者 null。
 
 type Node struct {
-	Val int
-	Next *Node
+	Val    int
+	Next   *Node
 	Random *Node
 }
 
 var length = 1
+
 func copyRandomList(head *Node) *Node {
 	if head == nil {
 		return nil
@@ -19,14 +20,14 @@ func copyRandomList(head *Node) *Node {
 	node := new(Node)
 	result := new(Node)
 	result.Next = node
-	
+
 	for head.Next != nil {
 		node.Val = head.Val
 		node.Next = new(Node)
 
 		node = node.Next
 		head = head.Next
-		length ++
+		length++
 	}
 	node.Val = head.Val
 
@@ -46,7 +47,7 @@ func indexOfNode(node *Node) int {
 
 	for node != nil {
 		node = node.Next
-		index ++
+		index++
 	}
 	return length - index
 }

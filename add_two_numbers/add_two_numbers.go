@@ -14,10 +14,9 @@ type ListNode struct {
 }
 
 func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
-
 	pass_num := 0
 	count := 0
-	var head, body, lastBody = &ListNode{}, &ListNode{}, &ListNode{}
+	head, body, lastBody := &ListNode{}, &ListNode{}, &ListNode{}
 
 	for l1 != nil && l2 != nil {
 

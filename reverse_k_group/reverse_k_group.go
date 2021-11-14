@@ -5,7 +5,7 @@ type ListNode struct {
 	Next *ListNode
 }
 
-//todo 每k个反转一次
+// todo 每k个反转一次
 func reverseKGroup(head *ListNode, k int) *ListNode {
 	dummyNode := &ListNode{
 		Val:  -1,

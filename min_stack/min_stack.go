@@ -21,7 +21,6 @@ func (this *MinStack) Push(x int) {
 }
 
 func (this *MinStack) Pop() {
-
 	this.length--
 	this.container = this.container[0:this.length]
 }

@@ -4,7 +4,6 @@ package count_digit_one
 //
 //例如，输入12，1～12这些整数中包含1 的数字有1、10、11和12，1一共出现了5次。
 
-
 func countDigitOne(n int) int {
 	var result, oneToShow int
 	layer := 1
@@ -13,9 +12,9 @@ func countDigitOne(n int) int {
 		left := n % 10
 		n /= 10
 
-		result += layer + oneToShow * left
+		result += layer + oneToShow*left
 
-		oneToShow = 10 * oneToShow + layer
+		oneToShow = 10*oneToShow + layer
 		layer *= 10
 	}
 	return result

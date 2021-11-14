@@ -2,7 +2,7 @@ package is_sub_structure
 
 // 剑指 Offer 26. 树的子结构
 
-//输入两棵二叉树A和B，判断B是不是A的子结构。(约定空树不是任意一个树的子结构)
+// 输入两棵二叉树A和B，判断B是不是A的子结构。(约定空树不是任意一个树的子结构)
 
 type TreeNode struct {
 	Val   int
@@ -20,7 +20,6 @@ func judgeSubTree(A, B *TreeNode) bool {
 	}
 	if A.Val == B.Val && isSubTree(A, B) {
 		return true
-
 	}
 	if judgeSubTree(A.Left, B) {
 		return true

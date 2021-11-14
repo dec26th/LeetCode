@@ -16,7 +16,7 @@ func getMinNumberStringList(nums []int, index int) []string {
 	for i := 0; i < len(nums); i++ {
 		x := getFirstNum(nums[i], index)
 		if _, ok := tempMap[x]; !ok {
-			tempMap[x] = []int {
+			tempMap[x] = []int{
 				nums[i],
 			}
 		} else {
@@ -32,7 +32,7 @@ func getMinNumberStringList(nums []int, index int) []string {
 			if len(tempMap[i]) == 1 {
 				result = append(result, strconv.Itoa(tempMap[i][0]))
 			} else {
-				result = append(result, getMinNumberStringList(tempMap[i],index + 1)...)
+				result = append(result, getMinNumberStringList(tempMap[i], index+1)...)
 			}
 		}
 	}
@@ -41,9 +41,9 @@ func getMinNumberStringList(nums []int, index int) []string {
 
 func getFirstNum(num int, index int) int {
 	nums := strconv.Itoa(num)
-	if len(nums) - 1 < index {
-		return int(nums[len(nums) - 1] - '0')
+	if len(nums)-1 < index {
+		return int(nums[len(nums)-1] - '0')
 	} else {
-		return int(nums[index - 1] - '0')
+		return int(nums[index-1] - '0')
 	}
 }

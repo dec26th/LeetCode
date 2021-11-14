@@ -14,7 +14,7 @@ func isNumber(s string) bool {
 	}
 
 	s = strings.Join(strings.Split(s, " "), "")
-	if isInterger(s) || isPoint(s){
+	if isInterger(s) || isPoint(s) {
 		return true
 	}
 	return false

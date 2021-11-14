@@ -6,7 +6,7 @@ import (
 )
 
 func TestMinNumber(t *testing.T) {
-	temp := []int {
+	temp := []int{
 		20,
 		1,
 	}

@@ -8,7 +8,6 @@ func maxSubArray(nums []int) int {
 	for i := 0; i < lenOfNums; i++ {
 		lastSum := 0
 		for j := i; j < lenOfNums; j++ {
-
 			if i == 0 && j == 0 {
 				lastSum += nums[j]
 				maxSum = nums[0]

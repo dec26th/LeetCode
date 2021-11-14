@@ -11,7 +11,6 @@ func reverseWords(s string) string {
 	rightBound := lenOfString
 
 	for nowBound := lenOfString - 1; nowBound >= 0; nowBound-- {
-
 		if s[nowBound] == ' ' {
 			if nowBound+1 != rightBound {
 				result = append(result, s[nowBound+1:rightBound])

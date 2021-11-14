@@ -1,7 +1,9 @@
 package solve_n_queens
 
-var result [][]string
-var num int
+var (
+	result [][]string
+	num    int
+)
 
 func solveNQueens(n int) [][]string {
 	num = n
@@ -23,9 +25,7 @@ func backTrack(board *[]string, raw int) {
 		if !isVaild(board, raw, col) {
 			continue
 		}
-
 	}
-
 }
 
 func isVaild(board *[]string, row, col int) bool {

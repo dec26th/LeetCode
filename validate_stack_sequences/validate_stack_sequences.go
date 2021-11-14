@@ -9,7 +9,7 @@ func validateStackSequences(pushed []int, popped []int) bool {
 	for i := 0; i < lenOfPushed; i++ {
 		if _, ok := mark[i]; !ok && pushed[i] == popped[index] {
 			mark[i] = '1'
-			index ++
+			index++
 			for ; i >= 0; i-- {
 				if _, ok := mark[i]; !ok {
 					i -= 1
@@ -19,10 +19,9 @@ func validateStackSequences(pushed []int, popped []int) bool {
 			num += 1
 			continue
 		}
-
 	}
 
 	return num == len(pushed)
 }
 
-//todo optimize
+// todo optimize

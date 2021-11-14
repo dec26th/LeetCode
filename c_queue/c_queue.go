@@ -20,19 +20,19 @@ func (this *CQueue) AppendTail(value int) {
 
 func (this *CQueue) DeleteHead() int {
 	if len(this.originStack) == 0 {
-		return  -1
+		return -1
 	}
-	supStack := make([]int, len(this.originStack) - 1)
+	supStack := make([]int, len(this.originStack)-1)
 
 	for i := len(this.originStack) - 1; i > 0; i-- {
-		supStack[len(this.originStack) - i - 1] = this.originStack[i]
+		supStack[len(this.originStack)-i-1] = this.originStack[i]
 	}
 	result := this.originStack[0]
 
 	this.originStack = make([]int, len(supStack))
 
 	for i := 0; i < len(this.originStack); i++ {
-		this.originStack[i] = supStack[len(this.originStack) - 1 - i]
+		this.originStack[i] = supStack[len(this.originStack)-1-i]
 	}
 	return result
 }

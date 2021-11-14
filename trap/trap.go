@@ -2,7 +2,7 @@ package trap
 
 import "math"
 
-//todo 接雨水
+// todo 接雨水
 func trap(height []int) int {
 	var totalDrop int
 	var hasLow bool
