@@ -85,3 +85,22 @@ func ThreeSumImproved(nums []int) [][]int {
 	}
 	return result
 }
+
+func ThreeSumGo(nums []int) [][]int {
+	record := make(map[int]struct{}, len(nums))
+
+	for i := 0; i < len(nums); i++ {
+		record[-nums[i]] = struct{}{}
+	}
+
+	result := make([][]int, 0)
+	for i := 0; i < len(nums); i++ {
+		for j := i + 1; j < len(nums); j++ {
+			if _, ok := record[nums[i] + nums[j]]; ok {
+				result = append(result, []int{nums[i], nums[j], -(nums[i] + nums[j])})
+			}
+		}
+	}
+
+	return result
+}

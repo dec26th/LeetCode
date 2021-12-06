@@ -24,3 +24,36 @@ func lengthOfLongestSubstring(s string) int {
 	}
 	return lenOfSubString
 }
+
+
+func lengthOfLongestSubstringTwo(s string) int {
+	if len(s) <= 1 {
+		return len(s)
+	}
+
+	record := make(map[uint8]struct{})
+
+	max := 0
+	length := 0
+	for i := 0; i < len(s); i++ {
+		if i > 0 {
+			delete(record, s[i - 1])
+
+		}
+		for j := length + i; j < len(s); j++ {
+			if _, ok := record[s[j]]; !ok {
+				record[s[j]] = struct{}{}
+				length ++
+			} else {
+				break
+			}
+		}
+
+		if length > max {
+			max = length
+		}
+		length--
+	}
+
+	return max
+}

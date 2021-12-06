@@ -11,7 +11,7 @@ type TreeNode struct {
 }
 
 func isSymmetric(root *TreeNode) bool {
-	if root == nil {
+	if root == nil  {
 		return true
 	}
 	return judgeSymmetric(root.Left, root.Right)
