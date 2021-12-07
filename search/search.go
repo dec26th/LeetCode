@@ -66,3 +66,60 @@ func searchNum(nums []int, target int) int {
 	}
 	return 0
 }
+
+func searchToday(nums []int, target int) int {
+	if len(nums) == 1 {
+		if nums[0] == target {
+			return 0
+		}
+		return -1
+	}
+	left, right := 0, len(nums)-1
+
+	for left <= right {
+		middle := (right + left) / 2
+
+		if nums[middle] == target {
+			return middle
+		}
+		if left == right {
+			return -1
+		}
+
+		if nums[left] < nums[right] {
+			if nums[middle] < target {
+				left = middle + 1
+				continue
+			} else if nums[middle] > target {
+				right = middle - 1
+				continue
+			}
+		}
+
+		if nums[left] > nums[right] {
+			if target < nums[right] {
+				left = middle
+			}
+
+			if target > nums[left] {
+				right = middle
+			}
+
+			if target >= nums[right] && target <= nums[len(nums)-1] {
+				left = right
+				right = len(nums) - 1
+			}
+
+			if target <= nums[left] && target >= nums[0] {
+				right = left
+				left = 0
+			}
+
+		}
+		if left+1 == right {
+			return -1
+		}
+	}
+
+	return -1
+}
