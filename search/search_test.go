@@ -78,7 +78,7 @@ func Test_searchToday1(t *testing.T) {
 				nums:   []int{4, 5, 6, 7, 0, 1, 2},
 				target: 3,
 			},
-			want: 4,
+			want: -1,
 		},
 		{
 			name: "pass",
@@ -95,6 +95,22 @@ func Test_searchToday1(t *testing.T) {
 				target: 1,
 			},
 			want: 1,
+		},
+		{
+			name: "pass",
+			args: args{
+				nums:   []int{3, 1},
+				target: 0,
+			},
+			want: -1,
+		},
+		{
+			name: "pass",
+			args: args{
+				nums:   []int{4, 5,6,7,8,1,2,3},
+				target: 8,
+			},
+			want: 4,
 		},
 
 		// TODO: Add test cases.

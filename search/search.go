@@ -97,23 +97,43 @@ func searchToday(nums []int, target int) int {
 		}
 
 		if nums[left] > nums[right] {
-			if target < nums[right] {
-				left = middle
+			if target < nums[right]  {
+				right = right - 1
+
+				continue
 			}
 
 			if target > nums[left] {
-				right = middle
+				left = left + 1
+				continue
 			}
 
 			if target >= nums[right] && target <= nums[len(nums)-1] {
-				left = right
+				if target == nums[right] {
+					return right
+				}
+				if target == nums[len(nums) - 1] {
+					return len(nums) - 1
+				}
+
+				left = right + 1
 				right = len(nums) - 1
+				continue
 			}
 
 			if target <= nums[left] && target >= nums[0] {
-				right = left
+				if target == nums[left] {
+					return left
+				}
+				if target == nums[0] {
+					return 0
+				}
+				right = left - 1
 				left = 0
+				continue
 			}
+
+			return -1
 
 		}
 		if left+1 == right {
