@@ -27,3 +27,8 @@ func buildTree(preorder []int, inorder []int) *TreeNode {
 	head.Right = buildTree(preorder[len(inorder[:i])+1:], inorder[i+1:])
 	return head
 }
+
+
+func buildTreeToday(preorder []int, inorder []int) *TreeNode {
+
+}

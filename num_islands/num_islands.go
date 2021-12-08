@@ -1,10 +1,9 @@
 package num_islands
 
-var row, line int
 
 func numIslands(grid [][]byte) int {
-	row = len(grid)
-	line = len(grid[0])
+	row := len(grid)
+	line := len(grid[0])
 	if line == 1 && row == 1 {
 		return int(grid[0][0])
 	}
@@ -22,6 +21,8 @@ func numIslands(grid [][]byte) int {
 }
 
 func findRelatedFriend(x int, y int, grid *[][]byte) {
+	row := len(*grid)
+	line := len((*grid)[0])
 	if x == row || x < 0 {
 		return
 	}

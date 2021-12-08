@@ -43,6 +43,28 @@ func max(x, y int) int {
 	return x
 }
 
+func rob20211208(nums []int) int {
+	if len(nums) == 3 {
+		return max(nums[1], nums[0] + nums[2])
+	}
+	if len(nums) == 2 {
+		return max(nums[0], nums[1])
+	}
+	if len(nums) == 1 {
+		return nums[0]
+	}
+
+	dp := make([]int, len(nums))
+	dp[0], dp[1] = nums[0], nums[1]
+	dp[2] = max(nums[0] + nums[2], nums[2])
+	for i := 3; i < len(nums); i++ {
+
+		dp[i] = max(dp[i - 3] + nums[i], max(dp[i - 2] + nums[i], dp[i - 1]))
+	}
+
+	return max(dp[len(nums) - 1], dp[len(nums) - 2])
+}
+
 // 213. 打家劫舍 II
 
 //你是一个专业的小偷，计划偷窃沿街的房屋，每间房内都藏有一定的现金。这个地方所有的房屋都 围成一圈 ，这意味着第一个房屋和最后一个房屋是紧挨着的。

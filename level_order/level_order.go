@@ -30,3 +30,33 @@ func levelOrder(root *TreeNode) []int {
 
 	return result
 }
+
+
+func levelOrderToday(root *TreeNode) [][]int {
+	if root == nil {
+		return nil
+	}
+
+	result := [][]int{
+	}
+	layer := []*TreeNode{root}
+	for len(layer) != 0 {
+
+		newLayer := make([]*TreeNode, 0)
+		thisLayer := make([]int, len(layer))
+		for i := 0; i < len(layer); i++ {
+			if layer[i].Left != nil {
+				newLayer = append(newLayer, layer[i].Left)
+			}
+			if layer[i].Right != nil {
+				newLayer = append(newLayer, layer[i].Right)
+			}
+			thisLayer[i] = layer[i].Val
+ 		}
+		 result = append(result, thisLayer)
+		 layer = newLayer
+	}
+
+
+	return result
+}
