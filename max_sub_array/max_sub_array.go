@@ -36,3 +36,23 @@ func maxSubArrayDP(nums []int) int {
 
 	return max
 }
+
+func maxSubArray20211210(nums []int) int {
+	max := nums[0]
+	for i := 1; i < len(nums); i++ {
+		if nums[i-1]+nums[i] > nums[i] {
+			nums[i] = nums[i-1] + nums[i]
+		}
+
+		max = Max(max, nums[i])
+	}
+	return max
+}
+
+func Max(x, y int) int {
+	if x > y {
+		return x
+	}
+
+	return y
+}

@@ -1,33 +1,32 @@
 package longest_consecutive
 
-var numsMap map[int]bool
-
 func longestConsecutive(nums []int) int {
-	longestLength := 0
+	if len(nums) == 0 {
+		return 0
+	}
+	longestLength := 1
 
-	numsMap = make(map[int]bool, len(nums))
-	for _, v := range nums {
-		numsMap[v] = true
+	numsMap := make(map[int]int, len(nums))
+	for index, v := range nums {
+		numsMap[v] = index
 	}
 
-	for _, v := range nums {
+	for v := range numsMap {
 		temLength := 0
-		if res, ok := numsMap[v]; ok && res {
-			findSmaller(v, &temLength)
-			findBigger(v+1, &temLength)
-			if temLength > longestLength {
-				longestLength = temLength
-			}
+		findSmaller(v, &temLength, numsMap)
+		findBigger(v+1, &temLength, numsMap)
+		if temLength > longestLength {
+			longestLength = temLength
 		}
 	}
 	return longestLength
 }
 
-func findSmaller(target int, tempLength *int) {
+func findSmaller(target int, tempLength *int, numsMap map[int]int) {
 	for {
-		if res, ok := numsMap[target]; ok && res {
+		if _, ok := numsMap[target]; ok {
+			delete(numsMap, target)
 			*tempLength++
-			numsMap[target] = false
 			target--
 
 		} else {
@@ -36,11 +35,11 @@ func findSmaller(target int, tempLength *int) {
 	}
 }
 
-func findBigger(target int, tempLength *int) {
+func findBigger(target int, tempLength *int, numsMap map[int]int) {
 	for {
-		if res, ok := numsMap[target]; ok && res {
+		if _, ok := numsMap[target]; ok {
 			*tempLength++
-			numsMap[target] = false
+			delete(numsMap, target)
 			target++
 
 		} else {
