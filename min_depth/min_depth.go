@@ -25,7 +25,7 @@ func minDepth(root *ListNode) int {
 		lenOfQueue := len(queue)
 		for indexToPoll < lenOfQueue-1 {
 			tempNode := queue[0]
-			queue := queue[1:]
+			queue = queue[1:]
 			if tempNode.Left == nil && tempNode.Right == nil {
 				return depth
 			}

@@ -28,7 +28,26 @@ func buildTree(preorder []int, inorder []int) *TreeNode {
 	return head
 }
 
-
 func buildTreeToday(preorder []int, inorder []int) *TreeNode {
+	return _buildTree(preorder, inorder)
+}
 
+func _buildTree(preorder []int, inorder []int) *TreeNode {
+	if len(preorder) == 0 {
+		return nil
+	}
+
+	head := new(TreeNode)
+	head.Val = preorder[0]
+
+	var i int
+	for ; i < len(inorder); i++ {
+		if inorder[i] == head.Val {
+			break
+		}
+	}
+
+	head.Left = _buildTree(preorder[1:i+1], inorder[:i])
+	head.Right = _buildTree(preorder[i+1:], inorder[i+1:])
+	return head
 }
